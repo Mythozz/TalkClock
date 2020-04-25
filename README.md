@@ -1,2 +1,2 @@
 # TalkClock
-Clock for talks
+Arduino based clock for talks
