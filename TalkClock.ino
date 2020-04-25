@@ -67,7 +67,7 @@ int pixelThree[8][8] = {
   { 0, 0, 0, 0, 0, 1, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
- 
+
 int pixelFive[8][8] = {
   { 0, 0, 1, 1, 1, 1, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 0, 0 },
@@ -134,58 +134,48 @@ int pixelClear[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-void setZero() { 
-  setPixelArr(pixelZero);  
+void setZero() {
+  setPixelArr(pixelZero);
 }
 
 void setOne() {
-  setPixelArr(pixelOne);  
+  setPixelArr(pixelOne);
 }
 
 void setTwo() {
-  setPixelArr(pixelTwo);  
+  setPixelArr(pixelTwo);
 }
 
 void setThree() {
-  setPixelArr(pixelThree);  
+  setPixelArr(pixelThree);
 }
 
 void setFour() {
-  setPixelArr(pixelFour);  
+  setPixelArr(pixelFour);
 }
 
 void setFive() {
-  setPixelArr(pixelFive);  
+  setPixelArr(pixelFive);
 }
 
 void setSix() {
-  setPixelArr(pixelSix);  
+  setPixelArr(pixelSix);
 }
 
 void setSeven() {
-  setPixelArr(pixelSeven);  
+  setPixelArr(pixelSeven);
 }
 
 void setEight() {
-  setPixelArr(pixelEight);  
+  setPixelArr(pixelEight);
 }
 
 void setNine() {
-  setPixelArr(pixelNine);  
+  setPixelArr(pixelNine);
 }
 
 void clearPixel() {
-  setPixelArr(pixelClear);  
-}
-
-void setup() {
-
-  pixels.begin();
-  // put your setup code here, to run once:
-  //Serial.begin(9600); //start serial communication
-  //pinMode(analInput, INPUT);
-
-
+  setPixelArr(pixelClear);
 }
 
 int setPixelArr(int pxlArr[8][8])
@@ -199,7 +189,7 @@ int setPixelArr(int pxlArr[8][8])
   }
 }
 
-void setDigit(int digit) {  
+void setDigit(int digit) {
   switch (digit) {
     case 0:
         setZero();
@@ -245,11 +235,15 @@ void updatePanel() {
       pixels.setPixelColor(i, pixels.Color(0,0,0));
     }
     pixels.show();
-  } 
+  }
+}
+
+void setup() {
+  pixels.begin();
 }
 
 void loop() {
-  setDigit(digitCounter); 
+  setDigit(digitCounter);
   updatePanel();
   digitCounter = ++digitCounter % 10;
   do {
