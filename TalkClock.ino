@@ -4,8 +4,8 @@
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-int pixel[8][8] = { 0 };
-int pixelArr[64] = { 0 };
+bool pixel[8][8] = { 0 };
+bool pixelArr[64] = { 0 };
 int digitCounter = 0;
 
 int row = sizeof(pixel)/sizeof(pixel[0]);
@@ -13,7 +13,7 @@ int column = sizeof(pixel[0])/sizeof(pixel[0][0]);
 
 unsigned long time;
 
-int pixelZero[8][8] = {
+bool pixelZero[8][8] = {
   { 0, 0, 0, 1, 1, 1, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
@@ -24,7 +24,7 @@ int pixelZero[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelOne[8][8] = {
+bool pixelOne[8][8] = {
   { 0, 0, 0, 0, 0, 1, 0, 0 },
   { 0, 0, 0, 0, 1, 1, 0, 0 },
   { 0, 0, 0, 1, 0, 1, 0, 0 },
@@ -35,7 +35,7 @@ int pixelOne[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelTwo[8][8] = {
+bool pixelTwo[8][8] = {
   { 0, 0, 0, 1, 1, 1, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
   { 0, 0, 0, 0, 0, 0, 1, 0 },
@@ -46,7 +46,7 @@ int pixelTwo[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelThree[8][8] = {
+bool pixelThree[8][8] = {
   { 0, 0, 1, 1, 1, 1, 1, 0 },
   { 0, 0, 0, 0, 0, 1, 0, 0 },
   { 0, 0, 0, 0, 1, 0, 0, 0 },
@@ -57,7 +57,7 @@ int pixelThree[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
- int pixelFour[8][8] = {
+bool pixelFour[8][8] = {
   { 0, 0, 0, 0, 0, 1, 0, 0 },
   { 0, 0, 0, 0, 1, 1, 0, 0 },
   { 0, 0, 0, 1, 0, 1, 0, 0 },
@@ -68,7 +68,7 @@ int pixelThree[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelFive[8][8] = {
+bool pixelFive[8][8] = {
   { 0, 0, 1, 1, 1, 1, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 0, 0 },
@@ -79,7 +79,7 @@ int pixelFive[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelSix[8][8] = {
+bool pixelSix[8][8] = {
   { 0, 0, 0, 1, 1, 1, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 0, 0 },
@@ -90,7 +90,7 @@ int pixelSix[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelSeven[8][8] = {
+bool pixelSeven[8][8] = {
   { 0, 0, 1, 1, 1, 1, 1, 0 },
   { 0, 0, 0, 0, 0, 0, 1, 0 },
   { 0, 0, 0, 0, 0, 1, 0, 0 },
@@ -101,7 +101,7 @@ int pixelSeven[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelEight[8][8] = {
+bool pixelEight[8][8] = {
   { 0, 0, 0, 1, 1, 1, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
@@ -112,7 +112,7 @@ int pixelEight[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelNine[8][8] = {
+bool pixelNine[8][8] = {
   { 0, 0, 0, 1, 1, 1, 0, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
   { 0, 0, 1, 0, 0, 0, 1, 0 },
@@ -123,7 +123,7 @@ int pixelNine[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   };
 
-int pixelClear[8][8] = {
+bool pixelClear[8][8] = {
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -178,7 +178,7 @@ void clearPixel() {
   setPixelArr(pixelClear);
 }
 
-int setPixelArr(int pxlArr[8][8])
+int setPixelArr(bool pxlArr[8][8])
 {
   int i = 0;
   for (int x=0; x<row; x++) {
